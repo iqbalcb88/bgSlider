@@ -38,3 +38,17 @@ function getSliding() {
   slides[currentIndex].classList.add('active');
   body.setAttribute('style', slides[currentIndex].getAttribute('style').trim());
 }
+
+(function () {
+  const interval = setInterval(() => {
+    if (currentIndex === slides.length - 1) {
+      currentIndex = -1;
+    }
+    currentIndex++;
+    getSliding();
+  }, 2000);
+
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 2000 * 60);
+})();
